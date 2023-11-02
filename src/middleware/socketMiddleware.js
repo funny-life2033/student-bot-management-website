@@ -15,7 +15,12 @@ import {
   errorAlert,
   setIsWorking,
 } from "../store/studentSlice";
-import { connected, connectFailed, setClients } from "../store/authSlice";
+import {
+  connected,
+  connectFailed,
+  setClients,
+  setCredential,
+} from "../store/authSlice";
 
 export default function socketMiddleware(socket) {
   return (params) => (next) => (action) => {
@@ -98,6 +103,10 @@ export default function socketMiddleware(socket) {
 
         socket.on("isWorking", ({ isWorking, username }) => {
           dispatch(setIsWorking({ isWorking, username }));
+        });
+
+        socket.on("entered credential", (data) => {
+          dispatch(setCredential(data));
         });
 
         break;

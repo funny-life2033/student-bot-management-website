@@ -52,6 +52,9 @@ const userSlice = createSlice({
     setClients: (state, { payload }) => {
       state.clients = payload;
     },
+    setCredential: (state, { payload }) => {
+      state.clients[payload.username].credential = payload.credential;
+    },
   },
   extraReducers: {
     [registerClient.pending]: (state) => {
@@ -82,5 +85,6 @@ export const {
   disconnect,
   alertedNewClient,
   setClients,
+  setCredential,
 } = userSlice.actions;
 export default userSlice.reducer;
