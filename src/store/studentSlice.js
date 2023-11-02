@@ -54,7 +54,10 @@ const studentSlice = createSlice({
       state.newSlots = payload;
     },
     botConnected: (state, { payload }) => {
-      state.bots[payload] = { availableSlots: [] };
+      state.bots[payload.username] = {
+        availableSlots: [],
+        credential: payload.credential,
+      };
     },
     botDisconnected: (state, { payload }) => {
       delete state.bots[payload];

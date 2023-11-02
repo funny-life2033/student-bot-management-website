@@ -41,8 +41,8 @@ export default function socketMiddleware(socket) {
           dispatch(connectFailed(err));
         });
 
-        socket.on("student bot connect", (username) => {
-          dispatch(studentBotConnected(username));
+        socket.on("student bot connect", (client) => {
+          dispatch(studentBotConnected(client));
         });
 
         socket.on("student bot disconnect", (username) => {
