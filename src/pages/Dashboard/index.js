@@ -103,7 +103,7 @@ const Dashboard = () => {
                   </TableCell>
                   <TableCell>
                     <Button>
-                      {studentBots[client.username]?.reservedSlots.length || 0}
+                      {studentBots[client.username]?.availableSlots.length || 0}
                     </Button>
                   </TableCell>
                   <TableCell>
