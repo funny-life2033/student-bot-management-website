@@ -13,6 +13,7 @@ import {
   newReservedSlotAlert as studentNewReservedSlotAlert,
   initStudentBots,
   errorAlert,
+  setIsWorking,
 } from "../store/studentSlice";
 import { connected, connectFailed, setClients } from "../store/authSlice";
 
@@ -93,6 +94,10 @@ export default function socketMiddleware(socket) {
 
         socket.on("alert", ({ username, text, slots }) => {
           dispatch(studentNewReservedSlotAlert({ username, text }));
+        });
+
+        socket.on("isWorking", ({ isWorking, username }) => {
+          dispatch(setIsWorking({ isWorking, username }));
         });
 
         break;

@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import { blue, yellow } from "@mui/material/colors";
 import { useDispatch, useSelector } from "react-redux";
-import { startBot, stopBot } from "../../store/adiSlice";
+import { startBot, stopBot } from "../../store/studentSlice";
 
 const theme = createTheme({
   palette: {

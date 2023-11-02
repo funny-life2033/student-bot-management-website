@@ -1,7 +1,7 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import SocketClient from "../utils/socketClient";
 import authSlice from "./authSlice";
-import adiSlice from "./adiSlice";
+import studentSlice from "./studentSlice";
 import socketMiddleware from "../middleware/socketMiddleware";
 
 const socket = new SocketClient();
@@ -9,7 +9,7 @@ const socket = new SocketClient();
 export const store = configureStore({
   reducer: {
     user: authSlice,
-    adi: adiSlice,
+    student: studentSlice,
   },
   middleware: [socketMiddleware(socket), ...getDefaultMiddleware()],
 });

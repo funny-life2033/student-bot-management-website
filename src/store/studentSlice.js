@@ -10,12 +10,12 @@ const studentSlice = createSlice({
   name: "student",
   initialState,
   reducers: {
-    initstudentBots: (state) => {
+    initStudentBots: (state) => {
       state.bots = {};
       state.newSlots = [];
     },
     setIsWorking: (state, { payload }) => {
-      if (state.bots[payload])
+      if (state.bots[payload.username])
         state.bots[payload.username].isWorking = payload.isWorking;
     },
     startBot: (state, { payload }) => {
@@ -109,7 +109,7 @@ const studentSlice = createSlice({
 
 export const {
   alertedNewSlot,
-  initstudentBots,
+  initStudentBots,
   startBot,
   startedBot,
   stopBot,
