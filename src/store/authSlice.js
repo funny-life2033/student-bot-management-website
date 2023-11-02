@@ -53,7 +53,13 @@ const userSlice = createSlice({
       state.clients = payload;
     },
     setCredential: (state, { payload }) => {
-      state.clients[payload.username].credential = payload.credential;
+      state.clients = state.clients.map((client) => {
+        if (client.username === payload) {
+          return { ...client, credential: payload.credential };
+        } else {
+          return client;
+        }
+      });
     },
   },
   extraReducers: {
