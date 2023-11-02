@@ -5,7 +5,7 @@ export const registerClient = createAsyncThunk(
   "registerClient",
   async ({ username, password }) => {
     try {
-      await Axios.post("/adiClient/registerClient", {
+      await Axios.post("/studentClient/registerClient", {
         username,
         password,
       });

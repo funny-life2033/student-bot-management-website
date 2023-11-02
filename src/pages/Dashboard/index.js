@@ -69,7 +69,7 @@ const theme = createTheme({
 const Dashboard = () => {
   const dispatch = useDispatch();
 
-  const adiBots = useSelector((state) => state.adi.bots);
+  const studentBots = useSelector((state) => state.student.bots);
   const { clients, isGettingClients } = useSelector((state) => state.user);
 
   return (
@@ -103,14 +103,14 @@ const Dashboard = () => {
                   </TableCell>
                   <TableCell>
                     <Button>
-                      {adiBots[client.username]?.reservedSlots.length || 0}
+                      {studentBots[client.username]?.reservedSlots.length || 0}
                     </Button>
                   </TableCell>
                   <TableCell>
                     <Button
-                      color={adiBots[client.username] ? "primary" : "error"}
+                      color={studentBots[client.username] ? "primary" : "error"}
                     >
-                      {adiBots[client.username] ? "active" : "inactive"}
+                      {studentBots[client.username] ? "active" : "inactive"}
                     </Button>
                   </TableCell>
                   <TableCell>
@@ -118,11 +118,11 @@ const Dashboard = () => {
                       color="success"
                       onClick={() => {
                         if (
-                          adiBots[client.username] &&
-                          !adiBots[client.username].isStarting &&
-                          !adiBots[client.username].isStopping
+                          studentBots[client.username] &&
+                          !studentBots[client.username].isStarting &&
+                          !studentBots[client.username].isStopping
                         ) {
-                          if (adiBots[client.username].isWorking) {
+                          if (studentBots[client.username].isWorking) {
                             dispatch(stopBot(client.username));
                           } else {
                             dispatch(startBot(client.username));
@@ -130,12 +130,12 @@ const Dashboard = () => {
                         }
                       }}
                     >
-                      {adiBots[client.username]
-                        ? adiBots[client.username].isStarting
+                      {studentBots[client.username]
+                        ? studentBots[client.username].isStarting
                           ? "Starting..."
-                          : adiBots[client.username].isStopping
+                          : studentBots[client.username].isStopping
                           ? "Stopping..."
-                          : adiBots[client.username].isWorking
+                          : studentBots[client.username].isWorking
                           ? "Stop"
                           : "Start"
                         : "Start"}
