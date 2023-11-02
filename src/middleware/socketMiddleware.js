@@ -106,6 +106,7 @@ export default function socketMiddleware(socket) {
         });
 
         socket.on("entered credential", (data) => {
+          console.log("entered credential", data);
           dispatch(setCredential(data));
         });
 
