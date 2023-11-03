@@ -74,7 +74,7 @@ export default function socketMiddleware(socket) {
           dispatch(startedStudentBot(username));
         });
 
-        socket.on("student bot stopped", ({ username }) => {
+        socket.on("student bot stopped", (username) => {
           dispatch(stoppedStudentBot(username));
         });
 
