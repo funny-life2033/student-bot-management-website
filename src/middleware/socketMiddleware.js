@@ -97,9 +97,9 @@ export default function socketMiddleware(socket) {
           dispatch(setStudentReservedSlots(data));
         });
 
-        socket.on("error alert", ({ error }) => {
-          console.log("error alert", error);
-          dispatch(errorAlert(error));
+        socket.on("error alert", ({ error, username }) => {
+          console.log("error alert", `${error} in ${username}`);
+          dispatch(errorAlert(`${error} in ${username}`));
         });
 
         socket.on("alert", ({ username, text, slots }) => {
