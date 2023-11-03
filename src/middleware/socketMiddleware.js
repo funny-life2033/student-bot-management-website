@@ -118,7 +118,7 @@ export default function socketMiddleware(socket) {
           dispatch(studentNewReservedSlotAlert({ username, text }));
         });
 
-        socket.on("isWorking", ({ isWorking, username }) => {
+        socket.on("is working", ({ isWorking, username }) => {
           dispatch(setIsWorking({ isWorking, username }));
         });
 
