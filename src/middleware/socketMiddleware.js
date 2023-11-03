@@ -29,6 +29,8 @@ export default function socketMiddleware(socket) {
     const { dispatch } = params;
     const { type, payload } = action;
 
+    console.log("type: ", type, "data: ", payload);
+
     switch (type) {
       case "user/connect": {
         socket.connect();
@@ -133,12 +135,11 @@ export default function socketMiddleware(socket) {
         break;
       }
       case "student/startBot": {
-        console.log("student/startBot: ", payload);
-        socket.emit("message", "student bot start", { to: payload });
+        socket.emit("student bot start", payload);
         break;
       }
       case "student/stopBot": {
-        socket.emit("message", "student bot stop", { to: payload });
+        socket.emit("student bot stop", payload);
         break;
       }
       case "student/acceptSlot": {
