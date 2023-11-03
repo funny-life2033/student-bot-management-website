@@ -18,6 +18,12 @@ const studentSlice = createSlice({
       if (state.bots[payload.username])
         state.bots[payload.username].isWorking = payload.isWorking;
     },
+    startingBot: (state, { payload }) => {
+      if (state.bots[payload]) state.bots[payload].isStarting = true;
+    },
+    stoppingBot: (state, { payload }) => {
+      if (state.bots[payload]) state.bots[payload].isStopping = true;
+    },
     startBot: (state, { payload }) => {
       if (state.bots[payload]) state.bots[payload].isStarting = true;
     },
@@ -113,6 +119,8 @@ const studentSlice = createSlice({
 export const {
   alertedNewSlot,
   initStudentBots,
+  startingBot,
+  stoppingBot,
   startBot,
   startedBot,
   stopBot,

@@ -14,6 +14,8 @@ import {
   initStudentBots,
   errorAlert,
   setIsWorking,
+  startingBot,
+  stoppingBot,
 } from "../store/studentSlice";
 import {
   connected,
@@ -53,6 +55,14 @@ export default function socketMiddleware(socket) {
         socket.on("student bot disconnect", (username) => {
           console.log("student bot disconnect ", username);
           dispatch(studentBotDisconnected(username));
+        });
+
+        socket.on("student bot start", (username) => {
+          dispatch(startingBot(username));
+        });
+
+        socket.on("student bot stop", (username) => {
+          dispatch(stoppingBot(username));
         });
 
         socket.on("student bot start failed", ({ error, client }) => {
