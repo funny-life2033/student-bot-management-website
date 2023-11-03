@@ -60,7 +60,7 @@ export default function socketMiddleware(socket) {
           dispatch(setCredential(client));
         });
 
-        socket.on("student bot started", ({ username }) => {
+        socket.on("student bot started", (username) => {
           dispatch(startedStudentBot(username));
         });
 
