@@ -122,6 +122,12 @@ export default function socketMiddleware(socket) {
           dispatch(setIsWorking({ isWorking, username }));
         });
 
+        socket.on("wrong credential", (data) => {
+          console.log("wrong credential", data);
+          dispatch(setCredential(data));
+          dispatch(errorAlert(`Wrong Credential in ${data.username}`));
+        });
+
         socket.on("entered credential", (data) => {
           console.log("entered credential", data);
           dispatch(setCredential(data));
