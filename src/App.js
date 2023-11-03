@@ -41,8 +41,9 @@ function App() {
         theme: "red",
         native: true,
       });
+
+      dispatch(alertedError());
     }
-    dispatch(alertedError());
   }, [error, dispatch]);
 
   return (
