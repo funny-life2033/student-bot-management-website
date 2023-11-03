@@ -55,6 +55,11 @@ export default function socketMiddleware(socket) {
           dispatch(studentBotDisconnected(username));
         });
 
+        socket.on("student bot start failed", ({ error, client }) => {
+          dispatch(errorAlert(error));
+          dispatch(setCredential(client));
+        });
+
         socket.on("student bot started", ({ username }) => {
           dispatch(startedStudentBot(username));
         });
